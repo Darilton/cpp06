@@ -13,6 +13,11 @@ class ScalarConverter {
     private:
         static bool convert_int(const char *str);
         static bool convert_char(const char *str);
+        static bool convert_double(const char *str);
+        static bool convert_float(const char *str);
+        static bool convert_special(const char *str);
+        static bool error();
+        static void print(char ch_value, long long int_value, float float_value, double doubel_value);
 };
 
 #endif
