@@ -24,7 +24,7 @@ void ScalarConverter::print(char ch_value, long long int_value, float float_valu
     else
         std::cout << "int: " << int_value << std::endl;
 
-    if(double_value < std::numeric_limits<float>::min() || double_value > std::numeric_limits<float>::max())
+    if(double_value < -std::numeric_limits<float>::max() || double_value > std::numeric_limits<float>::max())
         std::cout << "float: " << "Impossible" << std::endl;
     else
         std::cout << "float: " << float_value << std::endl;
