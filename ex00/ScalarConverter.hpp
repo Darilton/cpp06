@@ -3,14 +3,13 @@
 
 class ScalarConverter {
     public:
-        ScalarConverter();
-        ScalarConverter(const ScalarConverter& other);
         ScalarConverter operator=(const ScalarConverter& other);
         ~ScalarConverter();
-
         static void convert(const char *str);
 
     private:
+        ScalarConverter();
+        ScalarConverter(const ScalarConverter& other);
         static bool convert_int(const char *str);
         static bool convert_char(const char *str);
         static bool convert_double(const char *str);
