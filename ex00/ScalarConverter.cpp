@@ -47,9 +47,11 @@ void ScalarConverter::print(char ch_value, long long int_value, float float_valu
     std::cout << "double: " << double_value << std::endl;
 }
 bool ScalarConverter::convert_char(const char *str){
+   std::string sstr(str);
    int i = 0;
    char ch = '\0';
 
+   if(sstr.size() > 3) return false;
    if(str[i++] != '\'') return false;
    if(str[i] && str[i] != '\'' && str[i+1] != '\'') return false;
    if(str[i] != '\'') ch = str[1];
