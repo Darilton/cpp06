@@ -89,7 +89,7 @@ bool ScalarConverter::convert_float(const char *str){
     if(!value.size() || value[value.size() - 1] != 'f') return false;
     value.erase(value.size() - 1 );
     std::stringstream sstream(value);
-    double num;
+    float num;
     size_t i = 0;
     if(value[i] == '-' || value[i] == '+')
         i++;
