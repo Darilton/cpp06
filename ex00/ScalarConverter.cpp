@@ -50,9 +50,11 @@ bool ScalarConverter::convert_double(const char *str){
     std::string value(str);
     std::stringstream sstream(value);
     double num;
-    if(str[0] != '-' && str[0] != '+' && !isdigit(str[0]))
+    size_t i = 0;
+    if(value[i] == '-' || value[i] == '+')
+        i++;
+    if(value[i] == '.')
         return false;
-    size_t i = 1;
     for(; value[i] && value[i] != '.'; i++)
         if(!isdigit(value[i]))
             return false;
@@ -62,7 +64,6 @@ bool ScalarConverter::convert_double(const char *str){
             return false;
     sstream >> num;
     if(sstream.fail()) return false;
-    
     print(static_cast<char>(num), static_cast<long long>(num), static_cast<float>(num), static_cast<double>(num));
     
     return true;
@@ -74,13 +75,15 @@ bool ScalarConverter::convert_float(const char *str){
     value.erase(value.size() - 1 );
     std::stringstream sstream(value);
     double num;
-    if(str[0] != '-' && str[0] != '+' && !isdigit(str[0]))
+    size_t i = 0;
+    if(value[i] == '-' || value[i] == '+')
+        i++;
+    if(value[i] == '.')
         return false;
-    size_t i = 1;
     for(; value[i] && value[i] != '.'; i++)
         if(!isdigit(value[i]))
             return false;
-    if(value[i] == '.') i++;
+    if(value[i++] != '.') return false;
     for(; i < value.size(); i++)
         if(!isdigit(value[i]))
             return false;
@@ -103,7 +106,9 @@ bool ScalarConverter::convert_special(const char *str){
     if(sstr == "+inff") flag = true;
 
     if(!flag) return false;
-    if(sstr[sstr.size() - 1] == 'f' && sstr[sstr.size() - 2] == 'f') sstr.erase(sstr.size() - 1);
+    if(sstr == "nanf") sstr.erase(sstr.size() - 1);
+    if(sstr == "+inff") sstr.erase(sstr.size() - 1);
+    if(sstr == "-inff") sstr.erase(sstr.size() - 1);
 
     std::cout << "char: " << "impossible" << std::endl;
     std::cout << "int: " << "impossible" << std::endl;
