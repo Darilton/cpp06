@@ -14,21 +14,23 @@ void ScalarConverter::print(char ch_value, long long int_value, float float_valu
     else
         std::cout << "char: " << "'" << ch_value << "'" << std::endl;
 
-    if(double_value == std::floor(double_value)){
-        std::cout << std::setprecision(1);
+    bool is_integer = double_value == std::floor(double_value);
+
+    if(is_integer)
         std::cout << std::fixed;
-    }
 
     if(double_value < std::numeric_limits<int>::min() || double_value > std::numeric_limits<int>::max())
         std::cout << "int: " << "Impossible" << std::endl;
     else
         std::cout << "int: " << int_value << std::endl;
 
+    std::cout << std::setprecision(is_integer ? 1 : 7);
     if(double_value < -std::numeric_limits<float>::max() || double_value > std::numeric_limits<float>::max())
         std::cout << "float: " << "Impossible" << std::endl;
     else
         std::cout << "float: " << float_value << 'f' << std::endl;
 
+    std::cout << std::setprecision(is_integer ? 1 : 16);
     std::cout << "double: " << double_value << std::endl;
 }
 bool ScalarConverter::convert_char(const char *str){
