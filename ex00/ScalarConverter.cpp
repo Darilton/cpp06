@@ -38,7 +38,7 @@ bool ScalarConverter::convert_char(const char *str){
    char ch = '\0';
 
    if(str[i++] != '\'') return false;
-   if(str[i] != '\'' && str[i+1] != '\'') return false;
+   if(str[i] && str[i] != '\'' && str[i+1] != '\'') return false;
    if(str[i] != '\'') ch = str[1];
 
    print(static_cast<char>(ch), static_cast<long long>(ch), static_cast<float>(ch), static_cast<double>(ch));
