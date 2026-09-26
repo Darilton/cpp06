@@ -19,7 +19,7 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other){
 
 ScalarConverter::~ScalarConverter(){}
 
-void ScalarConverter::print(char ch_value, long long int_value, float float_value, double double_value){
+void ScalarConverter::print(char ch_value, long int_value, float float_value, double double_value){
     if (int_value < std::numeric_limits<char>::min() || int_value > std::numeric_limits<char>::max())
         std::cout << "char: " << "impossible" << std::endl;
     else if(!isprint(int_value))
@@ -47,15 +47,15 @@ void ScalarConverter::print(char ch_value, long long int_value, float float_valu
 }
 bool ScalarConverter::convert_char(const char *str){
    std::string sstr(str);
-   int i = 0;
    char ch = '\0';
 
-   if(sstr.size() > 3) return false;
-   if(str[i++] != '\'') return false;
-   if(str[i] && str[i] != '\'' && str[i+1] != '\'') return false;
-   if(str[i] != '\'') ch = str[1];
-
-   print(static_cast<char>(ch), static_cast<long long>(ch), static_cast<float>(ch), static_cast<double>(ch));
+   if(sstr.size() && sstr[sstr.size()-1] == '\'')
+    sstr.erase(sstr.size() - 1);
+   if(sstr[0] == '\'')
+    sstr.erase(0,1);
+   if(!sstr.size() || sstr.size() > 1) return false;
+   ch = sstr[0];
+   print(static_cast<char>(ch), static_cast<long>(ch), static_cast<float>(ch), static_cast<double>(ch));
 
    return true;
 }
@@ -78,7 +78,7 @@ bool ScalarConverter::convert_double(const char *str){
             return false;
     sstream >> num;
     if(sstream.fail()) return false;
-    print(static_cast<char>(num), static_cast<long long>(num), static_cast<float>(num), static_cast<double>(num));
+    print(static_cast<char>(num), static_cast<long>(num), static_cast<float>(num), static_cast<double>(num));
     
     return true;
 }
@@ -104,7 +104,7 @@ bool ScalarConverter::convert_float(const char *str){
     sstream >> num;
     if(sstream.fail()) return false;
     
-    print(static_cast<char>(num), static_cast<long long>(num), static_cast<float>(num), static_cast<double>(num));
+    print(static_cast<char>(num), static_cast<long>(num), static_cast<float>(num), static_cast<double>(num));
     
     return true;
 }
@@ -156,7 +156,7 @@ bool ScalarConverter::convert_int(const char *str){
     sstream >> num;
     if(sstream.fail()) return false;
 
-    print(static_cast<char>(num), static_cast<long long>(num), static_cast<float>(num), static_cast<double>(num));
+    print(static_cast<char>(num), static_cast<long>(num), static_cast<float>(num), static_cast<double>(num));
 
     return true;
 }
