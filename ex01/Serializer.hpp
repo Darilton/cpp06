@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmario <dmario@student.42luanda.com>       +#+  +:+       +#+        */
+/*   By: dmario <dmario@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/24 10:41:04 by dmario            #+#    #+#             */
-/*   Updated: 2026/09/24 19:32:47 by dmario           ###   ########.fr       */
+/*   Updated: 2026/09/26 10:24:13 by dmario           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ class Serializer
     public:
         static uintptr_t serialize(Data* ptr);
         static Data* deserialize(uintptr_t raw);
-        ~Serializer();
-        Serializer& operator=(const Serializer& other);
 
     private:
         Serializer();
         Serializer(const Serializer& other);
+        ~Serializer();
+        Serializer& operator=(const Serializer& other);
 };
 
 #endif

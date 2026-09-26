@@ -6,6 +6,19 @@
 #include <sstream>
 #include <limits>
 
+ScalarConverter::ScalarConverter(){}
+
+ScalarConverter::ScalarConverter(const ScalarConverter& other) {
+    (void) other;
+}
+
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other){
+    (void) other;
+    return *this;
+}
+
+ScalarConverter::~ScalarConverter(){}
+
 void ScalarConverter::print(char ch_value, long long int_value, float float_value, double double_value){
     if (int_value < std::numeric_limits<char>::min() || int_value > std::numeric_limits<char>::max())
         std::cout << "char: " << "impossible" << std::endl;
