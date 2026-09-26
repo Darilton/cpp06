@@ -8,7 +8,7 @@
 
 void ScalarConverter::print(char ch_value, long long int_value, float float_value, double double_value){
     if (int_value < std::numeric_limits<char>::min() || int_value > std::numeric_limits<char>::max())
-        std::cout << "char: " << "Impossible" << std::endl;
+        std::cout << "char: " << "impossible" << std::endl;
     else if(!isprint(int_value))
         std::cout << "char: " << "Non displayable" << std::endl;
     else
@@ -20,13 +20,13 @@ void ScalarConverter::print(char ch_value, long long int_value, float float_valu
         std::cout << std::fixed;
 
     if(double_value < std::numeric_limits<int>::min() || double_value > std::numeric_limits<int>::max())
-        std::cout << "int: " << "Impossible" << std::endl;
+        std::cout << "int: " << "impossible" << std::endl;
     else
         std::cout << "int: " << int_value << std::endl;
 
     std::cout << std::setprecision(is_integer ? 1 : 7);
     if(double_value < -std::numeric_limits<float>::max() || double_value > std::numeric_limits<float>::max())
-        std::cout << "float: " << "Impossible" << std::endl;
+        std::cout << "float: " << "impossible" << std::endl;
     else
         std::cout << "float: " << float_value << 'f' << std::endl;
 
@@ -105,8 +105,8 @@ bool ScalarConverter::convert_special(const char *str){
     if(!flag) return false;
     if(sstr[sstr.size() - 1] == 'f' && sstr[sstr.size() - 2] == 'f') sstr.erase(sstr.size() - 1);
 
-    std::cout << "char: " << "Impossible" << std::endl;
-    std::cout << "int: " << "Impossible" << std::endl;
+    std::cout << "char: " << "impossible" << std::endl;
+    std::cout << "int: " << "impossible" << std::endl;
     std::cout << "float: " << sstr << 'f' << std::endl;
     std::cout << "double: " << sstr << std::endl;
 
@@ -116,10 +116,10 @@ bool ScalarConverter::convert_special(const char *str){
 
 
 bool ScalarConverter::error(){
-    std::cout << "char: " << "Impossible" << std::endl;
-    std::cout << "int: " << "Impossible" << std::endl;
-    std::cout << "float: " << "Impossible" << std::endl;
-    std::cout << "double: " << "Impossible" << std::endl;
+    std::cout << "char: " << "impossible" << std::endl;
+    std::cout << "int: " << "impossible" << std::endl;
+    std::cout << "float: " << "impossible" << std::endl;
+    std::cout << "double: " << "impossible" << std::endl;
 
     return true;
 }
