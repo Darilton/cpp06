@@ -51,8 +51,12 @@ bool ScalarConverter::convert_char(const char *str){
 
    if(sstr.size() && sstr[sstr.size()-1] == '\'')
     sstr.erase(sstr.size() - 1);
+   else 
+    return false;
    if(sstr[0] == '\'')
     sstr.erase(0,1);
+   else
+    return false;
    if(!sstr.size() || sstr.size() > 1) return false;
    ch = sstr[0];
    print(static_cast<char>(ch), static_cast<long>(ch), static_cast<float>(ch), static_cast<double>(ch));
@@ -73,6 +77,7 @@ bool ScalarConverter::convert_double(const char *str){
         if(!isdigit(value[i]))
             return false;
     if(value[i++] != '.') return false;
+    if(!value[i]) return false;
     for(; i < value.size(); i++)
         if(!isdigit(value[i]))
             return false;
@@ -98,6 +103,7 @@ bool ScalarConverter::convert_float(const char *str){
         if(!isdigit(value[i]))
             return false;
     if(value[i++] != '.') return false;
+    if(!value[i]) return false;
     for(; i < value.size(); i++)
         if(!isdigit(value[i]))
             return false;
