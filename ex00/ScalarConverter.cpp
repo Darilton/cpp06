@@ -29,8 +29,7 @@ void ScalarConverter::print(char ch_value, long long int_value, float float_valu
 
     bool is_integer = double_value == std::floor(double_value);
 
-    if(is_integer)
-        std::cout << std::fixed;
+    std::cout << std::fixed;
 
     if(double_value < std::numeric_limits<int>::min() || double_value > std::numeric_limits<int>::max())
         std::cout << "int: " << "impossible" << std::endl;
